@@ -1,0 +1,40 @@
+{
+  "name" : "snn-aws-uqdb-ts_db-bc_product",
+  "description" : "",
+  "role" : "arn:aws-cn:iam::666206818793:role/glue-s3-access-role",
+  "executionProperty" : {
+    "maxConcurrentRuns" : 1
+  },
+  "command" : {
+    "name" : "glueetl",
+    "scriptLocation" : "s3://aws-glue-assets-666206818793-cn-northwest-1/scripts/snn-aws-uqdb-ts_db-bc_product.py",
+    "pythonVersion" : "3"
+  },
+  "defaultArguments" : {
+    "--enable-metrics" : "true",
+    "--enable-spark-ui" : "true",
+    "--spark-event-logs-path" : "s3://aws-glue-assets-666206818793-cn-northwest-1/sparkHistoryLogs/",
+    "--enable-job-insights" : "true",
+    "--enable-glue-datacatalog" : "true",
+    "--enable-continuous-cloudwatch-log" : "true",
+    "--job-bookmark-option" : "job-bookmark-enable",
+    "--job-language" : "python",
+    "--TempDir" : "s3://aws-glue-assets-666206818793-cn-northwest-1/temporary/"
+  },
+  "connections" : {
+    "connections" : [ "snn-aws-qadb-ts_db" ]
+  },
+  "maxRetries" : 0,
+  "allocatedCapacity" : 10,
+  "timeout" : 2880,
+  "maxCapacity" : 10.0,
+  "glueVersion" : "3.0",
+  "numberOfWorkers" : 10,
+  "workerType" : "G.1X",
+  "sourceControlDetails" : {
+    "provider" : "GITHUB",
+    "repository" : "glue-job",
+    "branch" : "main",
+    "folder" : "snn-aws-uqdb-ts_db-bc_product"
+  }
+}
