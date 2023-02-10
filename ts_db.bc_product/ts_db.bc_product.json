@@ -1,0 +1,40 @@
+{
+  "name" : "ts_db.bc_product",
+  "description" : "",
+  "role" : "arn:aws-cn:iam::666206818793:role/glue-s3-access-role",
+  "executionProperty" : {
+    "maxConcurrentRuns" : 1
+  },
+  "command" : {
+    "name" : "glueetl",
+    "scriptLocation" : "s3://snn-dw1.0-storage/glue-cn-test/scripts/ts_db.bc_product.py",
+    "pythonVersion" : "3"
+  },
+  "defaultArguments" : {
+    "--enable-metrics" : "true",
+    "--enable-spark-ui" : "true",
+    "--spark-event-logs-path" : "s3://snn-dw1.0-storage/glue-cn-test/sparkHistoryLogs/",
+    "--enable-job-insights" : "true",
+    "--enable-glue-datacatalog" : "true",
+    "--enable-continuous-cloudwatch-log" : "true",
+    "--job-bookmark-option" : "job-bookmark-enable",
+    "--job-language" : "python",
+    "--TempDir" : "s3://snn-dw1.0-storage/glue-cn-test/temporary/"
+  },
+  "connections" : {
+    "connections" : [ "snn-aws-qadb-ts_db" ]
+  },
+  "maxRetries" : 0,
+  "allocatedCapacity" : 10,
+  "timeout" : 2880,
+  "maxCapacity" : 10.0,
+  "glueVersion" : "3.0",
+  "numberOfWorkers" : 10,
+  "workerType" : "G.1X",
+  "sourceControlDetails" : {
+    "provider" : "GITHUB",
+    "repository" : "glue-job",
+    "branch" : "main",
+    "folder" : "ts_db.bc_product"
+  }
+}
